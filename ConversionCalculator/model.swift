@@ -9,90 +9,74 @@
 import Foundation
 
 class Converter {
+    var speedTracker:SpeedUnitTracker
+    var volumeTracker:VolumeUnitTracker
+    var massTracker:MassUnitTracker
+    var lengthTracker:LengthUnitTracker
+    var tempTracker:TemperatureUnitTracker
+    var currentUnitType:unitType = .length
+    var inputValue: String = ""
+    var outputValue: Double = 0.0
+    var input: Double {
+        return Double(inputValue) ?? 0.0
+    }
+    
+    init(){
+        speedTracker = SpeedUnitTracker()
+        volumeTracker = VolumeUnitTracker()
+        massTracker = MassUnitTracker()
+        lengthTracker = LengthUnitTracker()
+        tempTracker = TemperatureUnitTracker()
+    }
     
     enum unitType {
         case speed, volume, length, mass, temperature
     }
     
     enum speed {
-        case milesPerHour
-        case kilometersPerHour
-        case feetPerSecond
-        case metersPerSecond
-        case knot
+        case milesPerHour, kilometersPerHour, feetPerSecond, metersPerSecond, knot
     }
     enum volume {
-        case gallon
-        case quart
-        case pint
-        case cup
-        case ounce
-        case tablespoon
-        case teaspoon
-        case cubicMeter
-        case cubicFoot
-        case cubicInch
-        case liters
-        case milliliters
+        case gallon, quart, pint, cup, ounce, tablespoon, teaspoon, cubicMeter, cubicFoot, cubicInch, liters, milliliters
     }
     enum length {
-        case kilometer
-        case meter
-        case centimeter
-        case millimeter
-        case micrometer
-        case nanometer
-        case mile
-        case yard
-        case feet
-        case inch
-        case nauticalMile
+        case kilometer, meter, centimeter, millimeter, micrometer, nanometer,  mile, yard, feet, inch, nauticalMile
     }
     enum mass {
-        case metricTon
-        case kilogram
-        case gram
-        case milligram
-        case microgram
-        case ton
-        case pound
-        case ounce
+        case metricTon, kilogram, gram, milligram, microgram, ton, pound, ounce
     }
     enum temperature {
-        case celsius
-        case fahrenheit
-        case kelvin
+        case celsius, fahrenheit, kelvin
     }
-    struct speedUnits {
-        var inputType: unitType = .speed
+    
+    struct SpeedUnitTracker {
+//        var inputType: unitType = .speed
         var specificInputUnit: speed = .milesPerHour
         var specificOutputUnit: speed = .kilometersPerHour
     }
-    struct volumeUnits {
-        var inputType: unitType = .volume
+    struct VolumeUnitTracker {
+//        var inputType: unitType = .volume
         var specificInputUnit: volume = .quart
         var specificOutputUnit: volume = .gallon
     }
-    struct lengthUnits {
-        var inputType: unitType = .length
+    struct LengthUnitTracker {
+//        var inputType: unitType = .length
         var specificInputUnit: length = .feet
         var specificOutputUnit: length = .inch
     }
-    struct massUnits {
-        var inputType: unitType = .mass
+    struct MassUnitTracker {
+//        var inputType: unitType = .mass
         var specificInputUnit: mass = .pound
         var specificOutputUnit: mass = .ounce
     }
-    struct temperatureUnits {
-        var inputType: unitType = .temperature
+    struct TemperatureUnitTracker {
+//        var inputType: unitType = .temperature
         var specificInputUnit: temperature = .celsius
         var specificOutputUnit: temperature = .fahrenheit
     }
-    var inputValue: String = ""
-    var outputValue: Double = 0.0
-    var input: Double {
-        return Double(inputValue) ?? 0.0
-    }
+    
+    
+    
 //Function time
     func clearInput() {
         self.inputValue = ""
@@ -109,7 +93,58 @@ class Converter {
         }
     }
     
-
+    func setCurrentUnitType(`as` unit:unitType){
+        currentUnitType = unit
+    }
+    
+    func setInputUnits(speed:speed){
+        guard currentUnitType == .speed else {return}
+        speedTracker.specificInputUnit = speed
+    }
+    
+    func setInputUnits(length:length){
+        guard currentUnitType == .length else {return}
+        lengthTracker.specificInputUnit = length
+    }
+    
+    func setInputUnits(mass:mass){
+        guard currentUnitType == .mass else {return}
+        massTracker.specificInputUnit = mass
+    }
+    
+    func setInputUnits(volume:volume){
+        guard currentUnitType == .volume else {return}
+        volumeTracker.specificInputUnit = volume
+    }
+    
+    func setInputUnits(temperature:temperature){
+        guard currentUnitType == .temperature else {return}
+        tempTracker.specificInputUnit = temperature
+    }
+    func setOutputUnits(speed:speed){
+        guard currentUnitType == .speed else {return}
+        speedTracker.specificOutputUnit = speed
+    }
+    
+    func setOutputUnits(length:length){
+        guard currentUnitType == .length else {return}
+        lengthTracker.specificOutputUnit = length
+    }
+    
+    func setOutputUnits(mass:mass){
+        guard currentUnitType == .mass else {return}
+        massTracker.specificOutputUnit = mass
+    }
+    
+    func setOutputUnits(volume:volume){
+        guard currentUnitType == .volume else {return}
+        volumeTracker.specificOutputUnit = volume
+    }
+    
+    func setOutputUnits(temperature:temperature){
+        guard currentUnitType == .temperature else {return}
+        tempTracker.specificOutputUnit = temperature
+    }
 
 
 
