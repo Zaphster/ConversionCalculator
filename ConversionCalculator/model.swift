@@ -146,9 +146,19 @@ class Converter {
         tempTracker.specificOutputUnit = temperature
     }
 
-
-
-
+    struct Conversion {
+        var inputUnits: String
+        var outputUnits: String
+        var operation: (Double, Double) -> Double
+        
+        init?(inputUnits: String, outputUnits: String, operation: @escaping (Double, Double) -> Double) {
+            guard !inputUnits.isEmpty else {return nil}
+            guard !outputUnits.isEmpty else {return nil}
+            self.inputUnits = inputUnits
+            self.outputUnits = outputUnits
+            self.operation = operation
+        }
+    }
 
 
 
@@ -180,4 +190,3 @@ class Converter {
 
 
 }
-
