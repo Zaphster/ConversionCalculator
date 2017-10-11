@@ -14,8 +14,6 @@ class Converter {
     var massTracker:MassUnitTracker
     var lengthTracker:LengthUnitTracker
     var tempTracker:TemperatureUnitTracker
-//    var mphToKph:SpeedConversion
-//    var kphToMph:SpeedConversion
     var currentUnitType:UnitType = .speed
     var inputValue: String = ""
     var outputValue: Double = 0.0
@@ -29,12 +27,6 @@ class Converter {
         massTracker = MassUnitTracker()
         lengthTracker = LengthUnitTracker()
         tempTracker = TemperatureUnitTracker()
-//        mphToKph = SpeedConversion(inputUnits: .milesPerHour, outputUnits: .kilometersPerHour) { (input) -> Double in
-//            return input * 1.60934
-//        }
-//        kphToMph = SpeedConversion(inputUnits: .kilometersPerHour, outputUnits: .milesPerHour, operation: { (input) -> Double in
-//            return input / 1.60934
-//        })
     }
     
     enum UnitType {
@@ -43,7 +35,6 @@ class Converter {
     
     enum Speed {
         case feetPerSecond, metersPerSecond, kilometersPerHour, milesPerHour
-        //static var list:[speed] = [speed.feetPerSecond, speed.metersPerSecond, speed.kilometersPerHour, speed.milesPerHour]
         
         func convertTo(_ outputUnit:Speed, with input:Double) -> Double{
             switch(self){
@@ -96,7 +87,6 @@ class Converter {
     }
     enum Volume {
         case cubicInch, cubicFoot, cubicMeter, milliliters, liters, gallon, quart, pint, cup, ounce, tablespoon, teaspoon
-        //static var list:[volume] = [volume.cubicInch, volume.cubicFoot, volume.cubicMeter, volume.milliliters, volume.liters, volume.gallon, volume.quart, volume.pint, volume.cup, volume.ounce, volume.tablespoon, volume.teaspoon]
         func convertTo(_ outputUnit:Volume, with input:Double) -> Double{
             switch(self){
             case .cubicInch:
@@ -118,7 +108,7 @@ class Converter {
                 case .pint:
                     return input * 0.034632
                 case .cup:
-                    return input * 0.0682794
+                    return input * 0.0692641
                 case .ounce:
                     return input * 0.554113
                 case .tablespoon:
@@ -145,7 +135,7 @@ class Converter {
                 case .pint:
                     return input * 59.8442
                 case .cup:
-                    return input * 117.987
+                    return input * 119.688
                 case .ounce:
                     return input * 957.506
                 case .tablespoon:
@@ -156,319 +146,290 @@ class Converter {
             case .cubicMeter:
                 switch(outputUnit){
                 case .cubicInch:
-                    return input *
+                    return input * 61023.7
                 case .cubicFoot:
-                    return input *
+                    return input * 35.3147
                 case .cubicMeter:
-                    return input *
+                    return input
                 case .milliliters:
-                    return input *
+                    return input * 1000000
                 case .liters:
-                    return input *
+                    return input * 1000
                 case .gallon:
-                    return input *
+                    return input * 264.172
                 case .quart:
-                    return input *
+                    return input * 1056.69
                 case .pint:
-                    return input *
+                    return input * 2113.38
                 case .cup:
-                    return input *
+                    return input * 4226.75
                 case .ounce:
-                    return input *
+                    return input * 33814
                 case .tablespoon:
-                    return input *
+                    return input * 67628
                 case .teaspoon:
-                    return input *
+                    return input * 202884
                 }
             case .milliliters:
                 switch(outputUnit){
                 case .cubicInch:
-                    return input *
+                    return input * 0.0610237
                 case .cubicFoot:
-                    return input *
+                    return input * 0.000035315
                 case .cubicMeter:
-                    return input *
+                    return input * 0.000001
                 case .milliliters:
-                    return input *
+                    return input
                 case .liters:
-                    return input *
+                    return input * 0.001
                 case .gallon:
-                    return input *
+                    return input * 0.000264172
                 case .quart:
-                    return input *
+                    return input * 0.00105669
                 case .pint:
-                    return input *
+                    return input * 0.00211338
                 case .cup:
-                    return input *
+                    return input * 0.00422675
                 case .ounce:
-                    return input *
+                    return input * 0.033814
                 case .tablespoon:
-                    return input *
+                    return input * 0.067628
                 case .teaspoon:
-                    return input *
+                    return input * 0.202884
                 }
             case .liters:
                 switch(outputUnit){
                 case .cubicInch:
-                    return input *
+                    return input * 61.0237
                 case .cubicFoot:
-                    return input *
+                    return input * 0.0353147
                 case .cubicMeter:
-                    return input *
+                    return input * 0.001
                 case .milliliters:
-                    return input *
+                    return input * 1000
                 case .liters:
-                    return input *
+                    return input
                 case .gallon:
-                    return input *
+                    return input * 0.264172
                 case .quart:
-                    return input *
+                    return input * 1.05669
                 case .pint:
-                    return input *
+                    return input * 2.11338
                 case .cup:
-                    return input *
+                    return input * 4.22675
                 case .ounce:
-                    return input *
+                    return input * 33.814
                 case .tablespoon:
-                    return input *
+                    return input * 67.628
                 case .teaspoon:
-                    return input *
+                    return input * 202.884
                 }
             case .gallon:
                 switch(outputUnit){
                 case .cubicInch:
-                    return input *
+                    return input * 231
                 case .cubicFoot:
-                    return input *
+                    return input * 0.133681
                 case .cubicMeter:
-                    return input *
+                    return input * 0.00378541
                 case .milliliters:
-                    return input *
+                    return input * 3785.41
                 case .liters:
-                    return input *
+                    return input * 3.78541
                 case .gallon:
-                    return input *
+                    return input
                 case .quart:
-                    return input *
+                    return input * 4
                 case .pint:
-                    return input *
+                    return input * 8
                 case .cup:
-                    return input *
+                    return input * 16
                 case .ounce:
-                    return input *
+                    return input * 128
                 case .tablespoon:
-                    return input *
+                    return input * 256
                 case .teaspoon:
-                    return input *
+                    return input * 768
                 }
             case .quart:
                 switch(outputUnit){
                 case .cubicInch:
-                    return input *
+                    return input * 57.75
                 case .cubicFoot:
-                    return input *
+                    return input * 0.0334201
                 case .cubicMeter:
-                    return input *
+                    return input * 0.000946353
                 case .milliliters:
-                    return input *
+                    return input * 946.353
                 case .liters:
-                    return input *
+                    return input * 0.946353
                 case .gallon:
-                    return input *
+                    return input * 0.24
                 case .quart:
-                    return input *
+                    return input
                 case .pint:
-                    return input *
+                    return input * 2
                 case .cup:
-                    return input *
+                    return input * 4
                 case .ounce:
-                    return input *
+                    return input * 32
                 case .tablespoon:
-                    return input *
+                    return input * 64
                 case .teaspoon:
-                    return input *
-                }
-                switch(outputUnit){
-                case .cubicInch:
-                    return input *
-                case .cubicFoot:
-                    return input *
-                case .cubicMeter:
-                    return input *
-                case .milliliters:
-                    return input *
-                case .liters:
-                    return input *
-                case .gallon:
-                    return input *
-                case .quart:
-                    return input *
-                case .pint:
-                    return input *
-                case .cup:
-                    return input *
-                case .ounce:
-                    return input *
-                case .tablespoon:
-                    return input *
-                case .teaspoon:
-                    return input *
+                    return input * 192
                 }
             case .pint:
                 switch(outputUnit){
                 case .cubicInch:
-                    return input *
+                    return input * 28.875
                 case .cubicFoot:
-                    return input *
+                    return input * 0.0167101
                 case .cubicMeter:
-                    return input *
+                    return input * 0.000473176
                 case .milliliters:
-                    return input *
+                    return input * 473.176
                 case .liters:
-                    return input *
+                    return input * 0.473176
                 case .gallon:
-                    return input *
+                    return input * 0.125
                 case .quart:
-                    return input *
+                    return input * 0.5
                 case .pint:
-                    return input *
+                    return input
                 case .cup:
-                    return input *
+                    return input * 2
                 case .ounce:
-                    return input *
+                    return input * 16
                 case .tablespoon:
-                    return input *
+                    return input * 32
                 case .teaspoon:
-                    return input *
+                    return input * 96
                 }
             case .cup:
                 switch(outputUnit){
                 case .cubicInch:
-                    return input *
+                    return input * 14.6457
                 case .cubicFoot:
-                    return input *
+                    return input * 0.00847552
                 case .cubicMeter:
-                    return input *
+                    return input * 0.00024
                 case .milliliters:
-                    return input *
+                    return input * 240
                 case .liters:
-                    return input *
+                    return input * 0.24
                 case .gallon:
-                    return input *
+                    return input * 0.0625
                 case .quart:
-                    return input *
+                    return input * 0.25
                 case .pint:
-                    return input *
+                    return input * 0.5
                 case .cup:
-                    return input *
+                    return input
                 case .ounce:
-                    return input *
+                    return input * 8
                 case .tablespoon:
-                    return input *
+                    return input * 16
                 case .teaspoon:
-                    return input *
+                    return input * 48
                 }
             case .ounce:
                 switch(outputUnit){
                 case .cubicInch:
-                    return input *
+                    return input * 1.80469
                 case .cubicFoot:
-                    return input *
+                    return input * 0.00104438
                 case .cubicMeter:
-                    return input *
+                    return input * 0.0000295735
                 case .milliliters:
-                    return input *
+                    return input * 29.5735
                 case .liters:
-                    return input *
+                    return input * 0.0295735
                 case .gallon:
-                    return input *
+                    return input * 0.0078125
                 case .quart:
-                    return input *
+                    return input * 0.03125
                 case .pint:
-                    return input *
+                    return input * 0.0625
                 case .cup:
-                    return input *
+                    return input * 0.125
                 case .ounce:
-                    return input *
+                    return input
                 case .tablespoon:
-                    return input *
+                    return input * 2
                 case .teaspoon:
-                    return input *
+                    return input * 6
                 }
             case .tablespoon:
                 switch(outputUnit){
                 case .cubicInch:
-                    return input *
+                    return input * 0.902344
                 case .cubicFoot:
-                    return input *
+                    return input * 0.00052219
                 case .cubicMeter:
-                    return input *
+                    return input * 0.0000147868
                 case .milliliters:
-                    return input *
+                    return input * 14.7868
                 case .liters:
-                    return input *
+                    return input * 0.0147868
                 case .gallon:
-                    return input *
+                    return input * 0.00390625
                 case .quart:
-                    return input *
+                    return input * 0.015625
                 case .pint:
-                    return input *
+                    return input * 0.03125
                 case .cup:
-                    return input *
+                    return input * 0.0625
                 case .ounce:
-                    return input *
+                    return input * 0.5
                 case .tablespoon:
-                    return input *
+                    return input
                 case .teaspoon:
-                    return input *
+                    return input * 3
                 }
             case .teaspoon:
                 switch(outputUnit){
                 case .cubicInch:
-                    return input *
+                    return input * 0.300781
                 case .cubicFoot:
-                    return input *
+                    return input * 0.000174063
                 case .cubicMeter:
-                    return input *
+                    return input * 0.00000492892
                 case .milliliters:
-                    return input *
+                    return input * 4.92892
                 case .liters:
-                    return input *
+                    return input * 0.00492892
                 case .gallon:
-                    return input *
+                    return input * 0.00130208
                 case .quart:
-                    return input *
+                    return input * 0.00520833
                 case .pint:
-                    return input *
+                    return input * 0.0104167
                 case .cup:
-                    return input *
+                    return input * 0.020833
                 case .ounce:
-                    return input *
+                    return input * 0.16666666667
                 case .tablespoon:
-                    return input *
+                    return input * 0.33333333333
                 case .teaspoon:
-                    return input *
+                    return input
                 }
             }
         }
     }
     enum Length {
         case inch, feet, yard, mile, kilometer, meter, centimeter, millimeter, micrometer, nanometer
-        //static var list:[length] = [length.inch, length.feet, length.yard, length.mile, length.kilometer, length.meter, length.centimeter, length.millimeter, length.micrometer, length.nanometer]
         func convertTo(_ outputUnit:Length, with input:Double) -> Double{
             return input
         }
     }
     enum Mass {
         case  ounce, pound, ton, metricTon, kilogram, gram, milligram, microgram
-        //static var list:[mass] = [mass.ounce, mass.pound, mass.ton, mass.metricTon, mass.kilogram, mass.gram, mass.milligram, mass.microgram]
         func convertTo(_ outputUnit:Mass, with input:Double) -> Double{
             return input
         }
     }
     enum Temperature {
         case fahrenheit, celsius, kelvin
-        //static var list:[temperature] = [temperature.fahrenheit, temperature.celsius, temperature.kelvin]
         func convertTo(_ outputUnit:Temperature, with input:Double) -> Double{
             return input
         }
@@ -585,44 +546,4 @@ class Converter {
             break;
         }
     }
-
-//    struct SpeedConversion {
-//        var inputUnits: speed
-//        var outputUnits: speed
-//        var operation: (Double) -> Double
-//
-//        init(inputUnits: speed, outputUnits: speed, operation: @escaping (Double) -> Double) {
-//            self.inputUnits = inputUnits
-//            self.outputUnits = outputUnits
-//            self.operation = operation
-//        }
-//    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
