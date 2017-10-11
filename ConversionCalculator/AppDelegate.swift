@@ -18,7 +18,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         let converter:Converter = Converter()
-        print(converter.kphToMph.operation( converter.mphToKph.operation(5)))
+        converter.append(digit:5);
+        converter.appendDecimal();
+        converter.append(digit:3)
+        converter.setCurrentUnitType(as: .length)
+        converter.setInputUnits(length: .feet)
+        converter.setOutputUnits(length: .centimeter)
+        converter.convert()
+        print(converter.input)
+        print(converter.outputValue)
         return true
     }
 
