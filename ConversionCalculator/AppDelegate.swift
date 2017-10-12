@@ -16,6 +16,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let converter:Converter = Converter()
+        converter.append(digit:5)
+        converter.appendDecimal()
+        converter.append(digit:3)
+        converter.setCurrentUnitType(as: .temperature)
+        converter.setInputUnits(temperature: .kelvin)
+        converter.setOutputUnits(temperature: .celsius)
+        converter.convert()
+        print(converter.input)
+        print(converter.outputValue)
         return true
     }
 
