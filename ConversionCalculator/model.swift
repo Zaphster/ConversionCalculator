@@ -542,6 +542,16 @@ class Converter {
     func clearInput() {
         self.inputValue = ""
     }
+    func toggleSign(){
+        if(self.inputValue.contains("-")){
+            self.inputValue = String(self.inputValue.suffix(1))
+        } else {
+            self.inputValue = "-\(self.inputValue)"
+        }
+    }
+    func deleteLastDigit(){
+        self.inputValue.remove(at: self.inputValue.index(before: self.inputValue.endIndex))
+    }
     func append(digit: Int) {
         self.inputValue += String(digit)
     }
