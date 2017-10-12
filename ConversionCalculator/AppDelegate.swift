@@ -18,8 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         let converter:Converter = Converter()
-        converter.append(digit:5);
-        converter.appendDecimal();
+        converter.append(digit:5)
+        converter.appendDecimal()
         converter.append(digit:3)
         converter.setCurrentUnitType(as: .length)
         converter.setInputUnits(length: .feet)
