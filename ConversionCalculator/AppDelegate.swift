@@ -10,23 +10,18 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    static let converter:Converter = Converter()
     var window: UIWindow?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
-        let converter:Converter = Converter()
-        converter.append(digit:5)
-        converter.appendDecimal()
-        converter.append(digit:3)
-        converter.setCurrentUnitType(as: .temperature)
-        converter.setInputUnits(temperature: .kelvin)
-        converter.setOutputUnits(temperature: .celsius)
-        converter.convert()
-        print(converter.input)
-        print(converter.outputValue)
+        AppDelegate.converter.setCurrentUnitType(as: .length)
+        AppDelegate.converter.setInputUnits(length: .feet)
+        AppDelegate.converter.setOutputUnits(length: .inch)
+        AppDelegate.converter.convert()
+        print(AppDelegate.converter.input)
+        print(AppDelegate.converter.outputValue)
         return true
     }
 

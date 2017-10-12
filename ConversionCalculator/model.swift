@@ -544,15 +544,17 @@ class Converter {
     }
     func toggleSign(){
         if(self.inputValue.contains("-")){
-            self.inputValue = String(self.inputValue.suffix(1))
+            self.inputValue = String(self.inputValue.suffix(self.inputValue.count - 1))
         } else {
             self.inputValue = "-\(self.inputValue)"
         }
     }
     func deleteLastDigit(){
+        guard !self.inputValue.isEmpty else {return}
         self.inputValue.remove(at: self.inputValue.index(before: self.inputValue.endIndex))
     }
     func append(digit: Int) {
+        guard !self.inputValue.isEmpty || digit != 0 else {return}
         self.inputValue += String(digit)
     }
     func appendDecimal() {
